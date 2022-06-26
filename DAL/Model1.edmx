@@ -1,0 +1,1075 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WORKERSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="areas">
+          <Key>
+            <PropertyRef Name="id_area" />
+          </Key>
+          <Property Name="id_area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_area" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="candidate">
+          <Key>
+            <PropertyRef Name="id_candidate" />
+          </Key>
+          <Property Name="id_candidate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_number" Type="nvarchar" MaxLength="9" />
+          <Property Name="name_" Type="nvarchar" MaxLength="20" />
+          <Property Name="phone" Type="nvarchar" MaxLength="10" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_city" Type="int" />
+          <Property Name="id_gender" Type="int" />
+          <Property Name="age" Type="int" />
+          <Property Name="seniority" Type="float" />
+          <Property Name="price" Type="int" />
+          <Property Name="password_" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="cities">
+          <Key>
+            <PropertyRef Name="id_city" />
+          </Key>
+          <Property Name="id_city" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_city" Type="nvarchar" MaxLength="20" />
+          <Property Name="id_area" Type="int" />
+        </EntityType>
+        <EntityType Name="companies">
+          <Key>
+            <PropertyRef Name="id_company" />
+          </Key>
+          <Property Name="id_company" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_company" Type="nvarchar" MaxLength="20" />
+          <Property Name="password_company" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="days_">
+          <Key>
+            <PropertyRef Name="id_day" />
+          </Key>
+          <Property Name="id_day" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_day" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="days_of_candidates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_day" Type="int" />
+          <Property Name="id_candidate" Type="int" />
+        </EntityType>
+        <EntityType Name="days_of_jobs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_job" Type="int" />
+          <Property Name="id_day" Type="int" />
+          <Property Name="num_priority" Type="int" />
+        </EntityType>
+        <EntityType Name="favorite_req">
+          <Key>
+            <PropertyRef Name="id_candidate" />
+            <PropertyRef Name="id_req" />
+          </Key>
+          <Property Name="id_candidate" Type="int" Nullable="false" />
+          <Property Name="id_req" Type="int" Nullable="false" />
+          <Property Name="num_priority" Type="int" />
+        </EntityType>
+        <EntityType Name="genders">
+          <Key>
+            <PropertyRef Name="id_gender" />
+          </Key>
+          <Property Name="id_gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_gender" Type="nvarchar" MaxLength="9" />
+        </EntityType>
+        <EntityType Name="jobs">
+          <Key>
+            <PropertyRef Name="id_job" />
+          </Key>
+          <Property Name="id_job" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_comp" Type="int" />
+          <Property Name="id_city" Type="int" />
+          <Property Name="age_range" Type="nvarchar" MaxLength="20" />
+          <Property Name="id_gender" Type="int" />
+          <Property Name="seniority_range" Type="nvarchar" MaxLength="20" />
+          <Property Name="amount" Type="int" />
+        </EntityType>
+        <EntityType Name="requiers_to_jobs">
+          <Key>
+            <PropertyRef Name="id_req_to_job" />
+          </Key>
+          <Property Name="id_req_to_job" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_job" Type="int" />
+          <Property Name="id_requirment" Type="int" />
+          <Property Name="score" Type="float" />
+        </EntityType>
+        <EntityType Name="requirements">
+          <Key>
+            <PropertyRef Name="id_req" />
+          </Key>
+          <Property Name="id_req" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_req" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="schedulings">
+          <Key>
+            <PropertyRef Name="id_schedule" />
+          </Key>
+          <Property Name="id_schedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_candidate" Type="int" />
+          <Property Name="id_job" Type="int" />
+        </EntityType>
+        <EntityType Name="score_of_jobs">
+          <Key>
+            <PropertyRef Name="id_score_of_jobs" />
+          </Key>
+          <Property Name="id_score_of_jobs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_job" Type="int" />
+          <Property Name="score_time" Type="float" />
+          <Property Name="score_gender" Type="float" />
+          <Property Name="score_age" Type="float" />
+          <Property Name="score_seniority" Type="float" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__candidate__id_ci__2D27B809">
+          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
+          <End Role="candidate" Type="Self.candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="id_city" />
+            </Principal>
+            <Dependent Role="candidate">
+              <PropertyRef Name="id_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__candidate__id_ge__2E1BDC42">
+          <End Role="genders" Type="Self.genders" Multiplicity="0..1" />
+          <End Role="candidate" Type="Self.candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genders">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="candidate">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cities__id_area__267ABA7A">
+          <End Role="areas" Type="Self.areas" Multiplicity="0..1" />
+          <End Role="cities" Type="Self.cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areas">
+              <PropertyRef Name="id_area" />
+            </Principal>
+            <Dependent Role="cities">
+              <PropertyRef Name="id_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__days_of_c__id_ca__48CFD27E">
+          <End Role="candidate" Type="Self.candidate" Multiplicity="0..1" />
+          <End Role="days_of_candidates" Type="Self.days_of_candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="candidate">
+              <PropertyRef Name="id_candidate" />
+            </Principal>
+            <Dependent Role="days_of_candidates">
+              <PropertyRef Name="id_candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__days_of_c__id_da__47DBAE45">
+          <End Role="days_" Type="Self.days_" Multiplicity="0..1" />
+          <End Role="days_of_candidates" Type="Self.days_of_candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="days_">
+              <PropertyRef Name="id_day" />
+            </Principal>
+            <Dependent Role="days_of_candidates">
+              <PropertyRef Name="id_day" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__days_of_j__id_da__4CA06362">
+          <End Role="days_" Type="Self.days_" Multiplicity="0..1" />
+          <End Role="days_of_jobs" Type="Self.days_of_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="days_">
+              <PropertyRef Name="id_day" />
+            </Principal>
+            <Dependent Role="days_of_jobs">
+              <PropertyRef Name="id_day" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__days_of_j__id_jo__4BAC3F29">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="0..1" />
+          <End Role="days_of_jobs" Type="Self.days_of_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="id_job" />
+            </Principal>
+            <Dependent Role="days_of_jobs">
+              <PropertyRef Name="id_job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__favorite___id_ca__32E0915F">
+          <End Role="candidate" Type="Self.candidate" Multiplicity="1" />
+          <End Role="favorite_req" Type="Self.favorite_req" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="candidate">
+              <PropertyRef Name="id_candidate" />
+            </Principal>
+            <Dependent Role="favorite_req">
+              <PropertyRef Name="id_candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__favorite___id_re__33D4B598">
+          <End Role="requirements" Type="Self.requirements" Multiplicity="1" />
+          <End Role="favorite_req" Type="Self.favorite_req" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="requirements">
+              <PropertyRef Name="id_req" />
+            </Principal>
+            <Dependent Role="favorite_req">
+              <PropertyRef Name="id_req" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__jobs__id_city__398D8EEE">
+          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
+          <End Role="jobs" Type="Self.jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="id_city" />
+            </Principal>
+            <Dependent Role="jobs">
+              <PropertyRef Name="id_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__jobs__id_comp__38996AB5">
+          <End Role="companies" Type="Self.companies" Multiplicity="0..1" />
+          <End Role="jobs" Type="Self.jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="companies">
+              <PropertyRef Name="id_company" />
+            </Principal>
+            <Dependent Role="jobs">
+              <PropertyRef Name="id_comp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__jobs__id_gender__3A81B327">
+          <End Role="genders" Type="Self.genders" Multiplicity="0..1" />
+          <End Role="jobs" Type="Self.jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genders">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="jobs">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__requiers___id_jo__403A8C7D">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="0..1" />
+          <End Role="requiers_to_jobs" Type="Self.requiers_to_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="id_job" />
+            </Principal>
+            <Dependent Role="requiers_to_jobs">
+              <PropertyRef Name="id_job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__requiers___id_re__412EB0B6">
+          <End Role="requirements" Type="Self.requirements" Multiplicity="0..1" />
+          <End Role="requiers_to_jobs" Type="Self.requiers_to_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="requirements">
+              <PropertyRef Name="id_req" />
+            </Principal>
+            <Dependent Role="requiers_to_jobs">
+              <PropertyRef Name="id_requirment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__schedulin__id_ca__440B1D61">
+          <End Role="candidate" Type="Self.candidate" Multiplicity="0..1" />
+          <End Role="schedulings" Type="Self.schedulings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="candidate">
+              <PropertyRef Name="id_candidate" />
+            </Principal>
+            <Dependent Role="schedulings">
+              <PropertyRef Name="id_candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__schedulin__id_jo__44FF419A">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="0..1" />
+          <End Role="schedulings" Type="Self.schedulings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="id_job" />
+            </Principal>
+            <Dependent Role="schedulings">
+              <PropertyRef Name="id_job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__score_of___id_jo__3D5E1FD2">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="0..1" />
+          <End Role="score_of_jobs" Type="Self.score_of_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="id_job" />
+            </Principal>
+            <Dependent Role="score_of_jobs">
+              <PropertyRef Name="id_job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WORKERSModelStoreContainer">
+          <EntitySet Name="areas" EntityType="Self.areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="candidate" EntityType="Self.candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cities" EntityType="Self.cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="companies" EntityType="Self.companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="days_" EntityType="Self.days_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="days_of_candidates" EntityType="Self.days_of_candidates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="days_of_jobs" EntityType="Self.days_of_jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="favorite_req" EntityType="Self.favorite_req" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genders" EntityType="Self.genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="requiers_to_jobs" EntityType="Self.requiers_to_jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="requirements" EntityType="Self.requirements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="schedulings" EntityType="Self.schedulings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="score_of_jobs" EntityType="Self.score_of_jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__candidate__id_ci__2D27B809" Association="Self.FK__candidate__id_ci__2D27B809">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="candidate" EntitySet="candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__candidate__id_ge__2E1BDC42" Association="Self.FK__candidate__id_ge__2E1BDC42">
+            <End Role="genders" EntitySet="genders" />
+            <End Role="candidate" EntitySet="candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cities__id_area__267ABA7A" Association="Self.FK__cities__id_area__267ABA7A">
+            <End Role="areas" EntitySet="areas" />
+            <End Role="cities" EntitySet="cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__days_of_c__id_ca__48CFD27E" Association="Self.FK__days_of_c__id_ca__48CFD27E">
+            <End Role="candidate" EntitySet="candidate" />
+            <End Role="days_of_candidates" EntitySet="days_of_candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__days_of_c__id_da__47DBAE45" Association="Self.FK__days_of_c__id_da__47DBAE45">
+            <End Role="days_" EntitySet="days_" />
+            <End Role="days_of_candidates" EntitySet="days_of_candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__days_of_j__id_da__4CA06362" Association="Self.FK__days_of_j__id_da__4CA06362">
+            <End Role="days_" EntitySet="days_" />
+            <End Role="days_of_jobs" EntitySet="days_of_jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__days_of_j__id_jo__4BAC3F29" Association="Self.FK__days_of_j__id_jo__4BAC3F29">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="days_of_jobs" EntitySet="days_of_jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__favorite___id_ca__32E0915F" Association="Self.FK__favorite___id_ca__32E0915F">
+            <End Role="candidate" EntitySet="candidate" />
+            <End Role="favorite_req" EntitySet="favorite_req" />
+          </AssociationSet>
+          <AssociationSet Name="FK__favorite___id_re__33D4B598" Association="Self.FK__favorite___id_re__33D4B598">
+            <End Role="requirements" EntitySet="requirements" />
+            <End Role="favorite_req" EntitySet="favorite_req" />
+          </AssociationSet>
+          <AssociationSet Name="FK__jobs__id_city__398D8EEE" Association="Self.FK__jobs__id_city__398D8EEE">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="jobs" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__jobs__id_comp__38996AB5" Association="Self.FK__jobs__id_comp__38996AB5">
+            <End Role="companies" EntitySet="companies" />
+            <End Role="jobs" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__jobs__id_gender__3A81B327" Association="Self.FK__jobs__id_gender__3A81B327">
+            <End Role="genders" EntitySet="genders" />
+            <End Role="jobs" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__requiers___id_jo__403A8C7D" Association="Self.FK__requiers___id_jo__403A8C7D">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="requiers_to_jobs" EntitySet="requiers_to_jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__requiers___id_re__412EB0B6" Association="Self.FK__requiers___id_re__412EB0B6">
+            <End Role="requirements" EntitySet="requirements" />
+            <End Role="requiers_to_jobs" EntitySet="requiers_to_jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__schedulin__id_ca__440B1D61" Association="Self.FK__schedulin__id_ca__440B1D61">
+            <End Role="candidate" EntitySet="candidate" />
+            <End Role="schedulings" EntitySet="schedulings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__schedulin__id_jo__44FF419A" Association="Self.FK__schedulin__id_jo__44FF419A">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="schedulings" EntitySet="schedulings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__score_of___id_jo__3D5E1FD2" Association="Self.FK__score_of___id_jo__3D5E1FD2">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="score_of_jobs" EntitySet="score_of_jobs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WORKERSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WORKERSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="areas" EntityType="WORKERSModel.area" />
+          <EntitySet Name="candidates" EntityType="WORKERSModel.candidate" />
+          <EntitySet Name="cities" EntityType="WORKERSModel.city" />
+          <EntitySet Name="days_" EntityType="WORKERSModel.days_" />
+          <EntitySet Name="days_of_candidates" EntityType="WORKERSModel.days_of_candidates" />
+          <EntitySet Name="days_of_jobs" EntityType="WORKERSModel.days_of_jobs" />
+          <EntitySet Name="favorite_req" EntityType="WORKERSModel.favorite_req" />
+          <EntitySet Name="genders" EntityType="WORKERSModel.gender" />
+          <EntitySet Name="jobs" EntityType="WORKERSModel.job" />
+          <EntitySet Name="requiers_to_jobs" EntityType="WORKERSModel.requiers_to_jobs" />
+          <EntitySet Name="requirements" EntityType="WORKERSModel.requirement" />
+          <EntitySet Name="schedulings" EntityType="WORKERSModel.scheduling" />
+          <EntitySet Name="score_of_jobs" EntityType="WORKERSModel.score_of_jobs" />
+          <EntitySet Name="sysdiagrams" EntityType="WORKERSModel.sysdiagram" />
+          <AssociationSet Name="FK__cities__id_area__267ABA7A" Association="WORKERSModel.FK__cities__id_area__267ABA7A">
+            <End Role="area" EntitySet="areas" />
+            <End Role="city" EntitySet="cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__candidate__id_ci__2D27B809" Association="WORKERSModel.FK__candidate__id_ci__2D27B809">
+            <End Role="city" EntitySet="cities" />
+            <End Role="candidate" EntitySet="candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__candidate__id_ge__2E1BDC42" Association="WORKERSModel.FK__candidate__id_ge__2E1BDC42">
+            <End Role="gender" EntitySet="genders" />
+            <End Role="candidate" EntitySet="candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__days_of_c__id_ca__48CFD27E" Association="WORKERSModel.FK__days_of_c__id_ca__48CFD27E">
+            <End Role="candidate" EntitySet="candidates" />
+            <End Role="days_of_candidates" EntitySet="days_of_candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__favorite___id_ca__32E0915F" Association="WORKERSModel.FK__favorite___id_ca__32E0915F">
+            <End Role="candidate" EntitySet="candidates" />
+            <End Role="favorite_req" EntitySet="favorite_req" />
+          </AssociationSet>
+          <AssociationSet Name="FK__schedulin__id_ca__440B1D61" Association="WORKERSModel.FK__schedulin__id_ca__440B1D61">
+            <End Role="candidate" EntitySet="candidates" />
+            <End Role="scheduling" EntitySet="schedulings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__jobs__id_city__398D8EEE" Association="WORKERSModel.FK__jobs__id_city__398D8EEE">
+            <End Role="city" EntitySet="cities" />
+            <End Role="job" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__days_of_c__id_da__47DBAE45" Association="WORKERSModel.FK__days_of_c__id_da__47DBAE45">
+            <End Role="days_" EntitySet="days_" />
+            <End Role="days_of_candidates" EntitySet="days_of_candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__days_of_j__id_da__4CA06362" Association="WORKERSModel.FK__days_of_j__id_da__4CA06362">
+            <End Role="days_" EntitySet="days_" />
+            <End Role="days_of_jobs" EntitySet="days_of_jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__days_of_j__id_jo__4BAC3F29" Association="WORKERSModel.FK__days_of_j__id_jo__4BAC3F29">
+            <End Role="job" EntitySet="jobs" />
+            <End Role="days_of_jobs" EntitySet="days_of_jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__favorite___id_re__33D4B598" Association="WORKERSModel.FK__favorite___id_re__33D4B598">
+            <End Role="requirement" EntitySet="requirements" />
+            <End Role="favorite_req" EntitySet="favorite_req" />
+          </AssociationSet>
+          <AssociationSet Name="FK__jobs__id_gender__3A81B327" Association="WORKERSModel.FK__jobs__id_gender__3A81B327">
+            <End Role="gender" EntitySet="genders" />
+            <End Role="job" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__requiers___id_jo__403A8C7D" Association="WORKERSModel.FK__requiers___id_jo__403A8C7D">
+            <End Role="job" EntitySet="jobs" />
+            <End Role="requiers_to_jobs" EntitySet="requiers_to_jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__schedulin__id_jo__44FF419A" Association="WORKERSModel.FK__schedulin__id_jo__44FF419A">
+            <End Role="job" EntitySet="jobs" />
+            <End Role="scheduling" EntitySet="schedulings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__score_of___id_jo__3D5E1FD2" Association="WORKERSModel.FK__score_of___id_jo__3D5E1FD2">
+            <End Role="job" EntitySet="jobs" />
+            <End Role="score_of_jobs" EntitySet="score_of_jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__requiers___id_re__412EB0B6" Association="WORKERSModel.FK__requiers___id_re__412EB0B6">
+            <End Role="requirement" EntitySet="requirements" />
+            <End Role="requiers_to_jobs" EntitySet="requiers_to_jobs" />
+          </AssociationSet>
+          <EntitySet Name="companies" EntityType="WORKERSModel.company" />
+          <AssociationSet Name="FK__jobs__id_comp__38996AB5" Association="WORKERSModel.FK__jobs__id_comp__38996AB5">
+            <End Role="company" EntitySet="companies" />
+            <End Role="job" EntitySet="jobs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="id_area" />
+          </Key>
+          <Property Name="id_area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_area" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cities" Relationship="WORKERSModel.FK__cities__id_area__267ABA7A" FromRole="area" ToRole="city" />
+        </EntityType>
+        <EntityType Name="candidate">
+          <Key>
+            <PropertyRef Name="id_candidate" />
+          </Key>
+          <Property Name="id_candidate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_number" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="name_" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_city" Type="Int32" />
+          <Property Name="id_gender" Type="Int32" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="seniority" Type="Double" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="password_" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="city" Relationship="WORKERSModel.FK__candidate__id_ci__2D27B809" FromRole="candidate" ToRole="city" />
+          <NavigationProperty Name="gender" Relationship="WORKERSModel.FK__candidate__id_ge__2E1BDC42" FromRole="candidate" ToRole="gender" />
+          <NavigationProperty Name="days_of_candidates" Relationship="WORKERSModel.FK__days_of_c__id_ca__48CFD27E" FromRole="candidate" ToRole="days_of_candidates" />
+          <NavigationProperty Name="favorite_req" Relationship="WORKERSModel.FK__favorite___id_ca__32E0915F" FromRole="candidate" ToRole="favorite_req" />
+          <NavigationProperty Name="schedulings" Relationship="WORKERSModel.FK__schedulin__id_ca__440B1D61" FromRole="candidate" ToRole="scheduling" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id_city" />
+          </Key>
+          <Property Name="id_city" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_city" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id_area" Type="Int32" />
+          <NavigationProperty Name="area" Relationship="WORKERSModel.FK__cities__id_area__267ABA7A" FromRole="city" ToRole="area" />
+          <NavigationProperty Name="candidates" Relationship="WORKERSModel.FK__candidate__id_ci__2D27B809" FromRole="city" ToRole="candidate" />
+          <NavigationProperty Name="jobs" Relationship="WORKERSModel.FK__jobs__id_city__398D8EEE" FromRole="city" ToRole="job" />
+        </EntityType>
+        <EntityType Name="days_">
+          <Key>
+            <PropertyRef Name="id_day" />
+          </Key>
+          <Property Name="id_day" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_day" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="days_of_candidates" Relationship="WORKERSModel.FK__days_of_c__id_da__47DBAE45" FromRole="days_" ToRole="days_of_candidates" />
+          <NavigationProperty Name="days_of_jobs" Relationship="WORKERSModel.FK__days_of_j__id_da__4CA06362" FromRole="days_" ToRole="days_of_jobs" />
+        </EntityType>
+        <EntityType Name="days_of_candidates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_day" Type="Int32" />
+          <Property Name="id_candidate" Type="Int32" />
+          <NavigationProperty Name="candidate" Relationship="WORKERSModel.FK__days_of_c__id_ca__48CFD27E" FromRole="days_of_candidates" ToRole="candidate" />
+          <NavigationProperty Name="days_" Relationship="WORKERSModel.FK__days_of_c__id_da__47DBAE45" FromRole="days_of_candidates" ToRole="days_" />
+        </EntityType>
+        <EntityType Name="days_of_jobs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_job" Type="Int32" />
+          <Property Name="id_day" Type="Int32" />
+          <Property Name="num_priority" Type="Int32" />
+          <NavigationProperty Name="days_" Relationship="WORKERSModel.FK__days_of_j__id_da__4CA06362" FromRole="days_of_jobs" ToRole="days_" />
+          <NavigationProperty Name="job" Relationship="WORKERSModel.FK__days_of_j__id_jo__4BAC3F29" FromRole="days_of_jobs" ToRole="job" />
+        </EntityType>
+        <EntityType Name="favorite_req">
+          <Key>
+            <PropertyRef Name="id_candidate" />
+            <PropertyRef Name="id_req" />
+          </Key>
+          <Property Name="id_candidate" Type="Int32" Nullable="false" />
+          <Property Name="id_req" Type="Int32" Nullable="false" />
+          <Property Name="num_priority" Type="Int32" />
+          <NavigationProperty Name="candidate" Relationship="WORKERSModel.FK__favorite___id_ca__32E0915F" FromRole="favorite_req" ToRole="candidate" />
+          <NavigationProperty Name="requirement" Relationship="WORKERSModel.FK__favorite___id_re__33D4B598" FromRole="favorite_req" ToRole="requirement" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="id_gender" />
+          </Key>
+          <Property Name="id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_gender" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="candidates" Relationship="WORKERSModel.FK__candidate__id_ge__2E1BDC42" FromRole="gender" ToRole="candidate" />
+          <NavigationProperty Name="jobs" Relationship="WORKERSModel.FK__jobs__id_gender__3A81B327" FromRole="gender" ToRole="job" />
+        </EntityType>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="id_job" />
+          </Key>
+          <Property Name="id_job" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_comp" Type="Int32" />
+          <Property Name="id_city" Type="Int32" />
+          <Property Name="age_range" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id_gender" Type="Int32" />
+          <Property Name="seniority_range" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Int32" />
+          <NavigationProperty Name="city" Relationship="WORKERSModel.FK__jobs__id_city__398D8EEE" FromRole="job" ToRole="city" />
+          <NavigationProperty Name="days_of_jobs" Relationship="WORKERSModel.FK__days_of_j__id_jo__4BAC3F29" FromRole="job" ToRole="days_of_jobs" />
+          <NavigationProperty Name="gender" Relationship="WORKERSModel.FK__jobs__id_gender__3A81B327" FromRole="job" ToRole="gender" />
+          <NavigationProperty Name="requiers_to_jobs" Relationship="WORKERSModel.FK__requiers___id_jo__403A8C7D" FromRole="job" ToRole="requiers_to_jobs" />
+          <NavigationProperty Name="schedulings" Relationship="WORKERSModel.FK__schedulin__id_jo__44FF419A" FromRole="job" ToRole="scheduling" />
+          <NavigationProperty Name="score_of_jobs" Relationship="WORKERSModel.FK__score_of___id_jo__3D5E1FD2" FromRole="job" ToRole="score_of_jobs" />
+          <NavigationProperty Name="company" Relationship="WORKERSModel.FK__jobs__id_comp__38996AB5" FromRole="job" ToRole="company" />
+        </EntityType>
+        <EntityType Name="requiers_to_jobs">
+          <Key>
+            <PropertyRef Name="id_req_to_job" />
+          </Key>
+          <Property Name="id_req_to_job" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_job" Type="Int32" />
+          <Property Name="id_requirment" Type="Int32" />
+          <Property Name="score" Type="Double" />
+          <NavigationProperty Name="job" Relationship="WORKERSModel.FK__requiers___id_jo__403A8C7D" FromRole="requiers_to_jobs" ToRole="job" />
+          <NavigationProperty Name="requirement" Relationship="WORKERSModel.FK__requiers___id_re__412EB0B6" FromRole="requiers_to_jobs" ToRole="requirement" />
+        </EntityType>
+        <EntityType Name="requirement">
+          <Key>
+            <PropertyRef Name="id_req" />
+          </Key>
+          <Property Name="id_req" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_req" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="favorite_req" Relationship="WORKERSModel.FK__favorite___id_re__33D4B598" FromRole="requirement" ToRole="favorite_req" />
+          <NavigationProperty Name="requiers_to_jobs" Relationship="WORKERSModel.FK__requiers___id_re__412EB0B6" FromRole="requirement" ToRole="requiers_to_jobs" />
+        </EntityType>
+        <EntityType Name="scheduling">
+          <Key>
+            <PropertyRef Name="id_schedule" />
+          </Key>
+          <Property Name="id_schedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_candidate" Type="Int32" />
+          <Property Name="id_job" Type="Int32" />
+          <NavigationProperty Name="candidate" Relationship="WORKERSModel.FK__schedulin__id_ca__440B1D61" FromRole="scheduling" ToRole="candidate" />
+          <NavigationProperty Name="job" Relationship="WORKERSModel.FK__schedulin__id_jo__44FF419A" FromRole="scheduling" ToRole="job" />
+        </EntityType>
+        <EntityType Name="score_of_jobs">
+          <Key>
+            <PropertyRef Name="id_score_of_jobs" />
+          </Key>
+          <Property Name="id_score_of_jobs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_job" Type="Int32" />
+          <Property Name="score_time" Type="Double" />
+          <Property Name="score_gender" Type="Double" />
+          <Property Name="score_age" Type="Double" />
+          <Property Name="score_seniority" Type="Double" />
+          <NavigationProperty Name="job" Relationship="WORKERSModel.FK__score_of___id_jo__3D5E1FD2" FromRole="score_of_jobs" ToRole="job" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__cities__id_area__267ABA7A">
+          <End Type="WORKERSModel.area" Role="area" Multiplicity="0..1" />
+          <End Type="WORKERSModel.city" Role="city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="id_area" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="id_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__candidate__id_ci__2D27B809">
+          <End Type="WORKERSModel.city" Role="city" Multiplicity="0..1" />
+          <End Type="WORKERSModel.candidate" Role="candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id_city" />
+            </Principal>
+            <Dependent Role="candidate">
+              <PropertyRef Name="id_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__candidate__id_ge__2E1BDC42">
+          <End Type="WORKERSModel.gender" Role="gender" Multiplicity="0..1" />
+          <End Type="WORKERSModel.candidate" Role="candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="candidate">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__days_of_c__id_ca__48CFD27E">
+          <End Type="WORKERSModel.candidate" Role="candidate" Multiplicity="0..1" />
+          <End Type="WORKERSModel.days_of_candidates" Role="days_of_candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="candidate">
+              <PropertyRef Name="id_candidate" />
+            </Principal>
+            <Dependent Role="days_of_candidates">
+              <PropertyRef Name="id_candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__favorite___id_ca__32E0915F">
+          <End Type="WORKERSModel.candidate" Role="candidate" Multiplicity="1" />
+          <End Type="WORKERSModel.favorite_req" Role="favorite_req" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="candidate">
+              <PropertyRef Name="id_candidate" />
+            </Principal>
+            <Dependent Role="favorite_req">
+              <PropertyRef Name="id_candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__schedulin__id_ca__440B1D61">
+          <End Type="WORKERSModel.candidate" Role="candidate" Multiplicity="0..1" />
+          <End Type="WORKERSModel.scheduling" Role="scheduling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="candidate">
+              <PropertyRef Name="id_candidate" />
+            </Principal>
+            <Dependent Role="scheduling">
+              <PropertyRef Name="id_candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__jobs__id_city__398D8EEE">
+          <End Type="WORKERSModel.city" Role="city" Multiplicity="0..1" />
+          <End Type="WORKERSModel.job" Role="job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id_city" />
+            </Principal>
+            <Dependent Role="job">
+              <PropertyRef Name="id_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__days_of_c__id_da__47DBAE45">
+          <End Type="WORKERSModel.days_" Role="days_" Multiplicity="0..1" />
+          <End Type="WORKERSModel.days_of_candidates" Role="days_of_candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="days_">
+              <PropertyRef Name="id_day" />
+            </Principal>
+            <Dependent Role="days_of_candidates">
+              <PropertyRef Name="id_day" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__days_of_j__id_da__4CA06362">
+          <End Type="WORKERSModel.days_" Role="days_" Multiplicity="0..1" />
+          <End Type="WORKERSModel.days_of_jobs" Role="days_of_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="days_">
+              <PropertyRef Name="id_day" />
+            </Principal>
+            <Dependent Role="days_of_jobs">
+              <PropertyRef Name="id_day" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__days_of_j__id_jo__4BAC3F29">
+          <End Type="WORKERSModel.job" Role="job" Multiplicity="0..1" />
+          <End Type="WORKERSModel.days_of_jobs" Role="days_of_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job">
+              <PropertyRef Name="id_job" />
+            </Principal>
+            <Dependent Role="days_of_jobs">
+              <PropertyRef Name="id_job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__favorite___id_re__33D4B598">
+          <End Type="WORKERSModel.requirement" Role="requirement" Multiplicity="1" />
+          <End Type="WORKERSModel.favorite_req" Role="favorite_req" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="requirement">
+              <PropertyRef Name="id_req" />
+            </Principal>
+            <Dependent Role="favorite_req">
+              <PropertyRef Name="id_req" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__jobs__id_gender__3A81B327">
+          <End Type="WORKERSModel.gender" Role="gender" Multiplicity="0..1" />
+          <End Type="WORKERSModel.job" Role="job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="job">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__requiers___id_jo__403A8C7D">
+          <End Type="WORKERSModel.job" Role="job" Multiplicity="0..1" />
+          <End Type="WORKERSModel.requiers_to_jobs" Role="requiers_to_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job">
+              <PropertyRef Name="id_job" />
+            </Principal>
+            <Dependent Role="requiers_to_jobs">
+              <PropertyRef Name="id_job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__schedulin__id_jo__44FF419A">
+          <End Type="WORKERSModel.job" Role="job" Multiplicity="0..1" />
+          <End Type="WORKERSModel.scheduling" Role="scheduling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job">
+              <PropertyRef Name="id_job" />
+            </Principal>
+            <Dependent Role="scheduling">
+              <PropertyRef Name="id_job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__score_of___id_jo__3D5E1FD2">
+          <End Type="WORKERSModel.job" Role="job" Multiplicity="0..1" />
+          <End Type="WORKERSModel.score_of_jobs" Role="score_of_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job">
+              <PropertyRef Name="id_job" />
+            </Principal>
+            <Dependent Role="score_of_jobs">
+              <PropertyRef Name="id_job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__requiers___id_re__412EB0B6">
+          <End Type="WORKERSModel.requirement" Role="requirement" Multiplicity="0..1" />
+          <End Type="WORKERSModel.requiers_to_jobs" Role="requiers_to_jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="requirement">
+              <PropertyRef Name="id_req" />
+            </Principal>
+            <Dependent Role="requiers_to_jobs">
+              <PropertyRef Name="id_requirment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="id_company" />
+          </Key>
+          <Property Name="id_company" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_company" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="password_company" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="jobs" Relationship="WORKERSModel.FK__jobs__id_comp__38996AB5" FromRole="company" ToRole="job" />
+        </EntityType>
+        <Association Name="FK__jobs__id_comp__38996AB5">
+          <End Type="WORKERSModel.company" Role="company" Multiplicity="0..1" />
+          <End Type="WORKERSModel.job" Role="job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="id_company" />
+            </Principal>
+            <Dependent Role="job">
+              <PropertyRef Name="id_comp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WORKERSModelStoreContainer" CdmEntityContainer="WORKERSEntities">
+          <EntitySetMapping Name="areas">
+            <EntityTypeMapping TypeName="WORKERSModel.area">
+              <MappingFragment StoreEntitySet="areas">
+                <ScalarProperty Name="name_area" ColumnName="name_area" />
+                <ScalarProperty Name="id_area" ColumnName="id_area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="candidates">
+            <EntityTypeMapping TypeName="WORKERSModel.candidate">
+              <MappingFragment StoreEntitySet="candidate">
+                <ScalarProperty Name="password_" ColumnName="password_" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="seniority" ColumnName="seniority" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="id_city" ColumnName="id_city" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="name_" ColumnName="name_" />
+                <ScalarProperty Name="Id_number" ColumnName="Id_number" />
+                <ScalarProperty Name="id_candidate" ColumnName="id_candidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="WORKERSModel.city">
+              <MappingFragment StoreEntitySet="cities">
+                <ScalarProperty Name="id_area" ColumnName="id_area" />
+                <ScalarProperty Name="name_city" ColumnName="name_city" />
+                <ScalarProperty Name="id_city" ColumnName="id_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="days_">
+            <EntityTypeMapping TypeName="WORKERSModel.days_">
+              <MappingFragment StoreEntitySet="days_">
+                <ScalarProperty Name="name_day" ColumnName="name_day" />
+                <ScalarProperty Name="id_day" ColumnName="id_day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="days_of_candidates">
+            <EntityTypeMapping TypeName="WORKERSModel.days_of_candidates">
+              <MappingFragment StoreEntitySet="days_of_candidates">
+                <ScalarProperty Name="id_candidate" ColumnName="id_candidate" />
+                <ScalarProperty Name="id_day" ColumnName="id_day" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="days_of_jobs">
+            <EntityTypeMapping TypeName="WORKERSModel.days_of_jobs">
+              <MappingFragment StoreEntitySet="days_of_jobs">
+                <ScalarProperty Name="num_priority" ColumnName="num_priority" />
+                <ScalarProperty Name="id_day" ColumnName="id_day" />
+                <ScalarProperty Name="id_job" ColumnName="id_job" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="favorite_req">
+            <EntityTypeMapping TypeName="WORKERSModel.favorite_req">
+              <MappingFragment StoreEntitySet="favorite_req">
+                <ScalarProperty Name="num_priority" ColumnName="num_priority" />
+                <ScalarProperty Name="id_req" ColumnName="id_req" />
+                <ScalarProperty Name="id_candidate" ColumnName="id_candidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genders">
+            <EntityTypeMapping TypeName="WORKERSModel.gender">
+              <MappingFragment StoreEntitySet="genders">
+                <ScalarProperty Name="name_gender" ColumnName="name_gender" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs">
+            <EntityTypeMapping TypeName="WORKERSModel.job">
+              <MappingFragment StoreEntitySet="jobs">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="seniority_range" ColumnName="seniority_range" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="age_range" ColumnName="age_range" />
+                <ScalarProperty Name="id_city" ColumnName="id_city" />
+                <ScalarProperty Name="id_comp" ColumnName="id_comp" />
+                <ScalarProperty Name="id_job" ColumnName="id_job" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="requiers_to_jobs">
+            <EntityTypeMapping TypeName="WORKERSModel.requiers_to_jobs">
+              <MappingFragment StoreEntitySet="requiers_to_jobs">
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="id_requirment" ColumnName="id_requirment" />
+                <ScalarProperty Name="id_job" ColumnName="id_job" />
+                <ScalarProperty Name="id_req_to_job" ColumnName="id_req_to_job" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="requirements">
+            <EntityTypeMapping TypeName="WORKERSModel.requirement">
+              <MappingFragment StoreEntitySet="requirements">
+                <ScalarProperty Name="name_req" ColumnName="name_req" />
+                <ScalarProperty Name="id_req" ColumnName="id_req" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="schedulings">
+            <EntityTypeMapping TypeName="WORKERSModel.scheduling">
+              <MappingFragment StoreEntitySet="schedulings">
+                <ScalarProperty Name="id_job" ColumnName="id_job" />
+                <ScalarProperty Name="id_candidate" ColumnName="id_candidate" />
+                <ScalarProperty Name="id_schedule" ColumnName="id_schedule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="score_of_jobs">
+            <EntityTypeMapping TypeName="WORKERSModel.score_of_jobs">
+              <MappingFragment StoreEntitySet="score_of_jobs">
+                <ScalarProperty Name="score_seniority" ColumnName="score_seniority" />
+                <ScalarProperty Name="score_age" ColumnName="score_age" />
+                <ScalarProperty Name="score_gender" ColumnName="score_gender" />
+                <ScalarProperty Name="score_time" ColumnName="score_time" />
+                <ScalarProperty Name="id_job" ColumnName="id_job" />
+                <ScalarProperty Name="id_score_of_jobs" ColumnName="id_score_of_jobs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WORKERSModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="WORKERSModel.company">
+              <MappingFragment StoreEntitySet="companies">
+                <ScalarProperty Name="password_company" ColumnName="password_company" />
+                <ScalarProperty Name="name_company" ColumnName="name_company" />
+                <ScalarProperty Name="id_company" ColumnName="id_company" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

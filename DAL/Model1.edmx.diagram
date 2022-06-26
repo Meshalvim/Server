@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="74a98064e89146e08666afb6366aa65b" Name="Diagram1">
+        <EntityTypeShape EntityType="WORKERSModel.area" Width="1.5" PointX="1.5" PointY="3" />
+        <EntityTypeShape EntityType="WORKERSModel.candidate" Width="1.5" PointX="3" PointY="7.75" />
+        <EntityTypeShape EntityType="WORKERSModel.city" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="WORKERSModel.days_" Width="1.5" PointX="6" PointY="5" />
+        <EntityTypeShape EntityType="WORKERSModel.days_of_candidates" Width="1.5" PointX="8.25" PointY="5.875" />
+        <EntityTypeShape EntityType="WORKERSModel.days_of_jobs" Width="1.5" PointX="11.25" PointY="5.75" />
+        <EntityTypeShape EntityType="WORKERSModel.favorite_req" Width="1.5" PointX="8.25" PointY="8.875" />
+        <EntityTypeShape EntityType="WORKERSModel.gender" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="WORKERSModel.job" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="WORKERSModel.requiers_to_jobs" Width="1.5" PointX="11.25" PointY="11.75" />
+        <EntityTypeShape EntityType="WORKERSModel.requirement" Width="1.5" PointX="6" PointY="13" />
+        <EntityTypeShape EntityType="WORKERSModel.scheduling" Width="1.5" PointX="11.25" PointY="8.875" />
+        <EntityTypeShape EntityType="WORKERSModel.score_of_jobs" Width="1.5" PointX="8.25" PointY="11.625" />
+        <EntityTypeShape EntityType="WORKERSModel.sysdiagram" Width="1.5" PointX="3.75" PointY="0.75" />
+        <AssociationConnector Association="WORKERSModel.FK__cities__id_area__267ABA7A" />
+        <AssociationConnector Association="WORKERSModel.FK__candidate__id_ci__2D27B809" />
+        <AssociationConnector Association="WORKERSModel.FK__candidate__id_ge__2E1BDC42" />
+        <AssociationConnector Association="WORKERSModel.FK__days_of_c__id_ca__48CFD27E" />
+        <AssociationConnector Association="WORKERSModel.FK__favorite___id_ca__32E0915F" />
+        <AssociationConnector Association="WORKERSModel.FK__schedulin__id_ca__440B1D61" />
+        <AssociationConnector Association="WORKERSModel.FK__jobs__id_city__398D8EEE" />
+        <AssociationConnector Association="WORKERSModel.FK__days_of_c__id_da__47DBAE45" />
+        <AssociationConnector Association="WORKERSModel.FK__days_of_j__id_da__4CA06362" />
+        <AssociationConnector Association="WORKERSModel.FK__days_of_j__id_jo__4BAC3F29" />
+        <AssociationConnector Association="WORKERSModel.FK__favorite___id_re__33D4B598" />
+        <AssociationConnector Association="WORKERSModel.FK__jobs__id_gender__3A81B327" />
+        <AssociationConnector Association="WORKERSModel.FK__requiers___id_jo__403A8C7D" />
+        <AssociationConnector Association="WORKERSModel.FK__schedulin__id_jo__44FF419A" />
+        <AssociationConnector Association="WORKERSModel.FK__score_of___id_jo__3D5E1FD2" />
+        <AssociationConnector Association="WORKERSModel.FK__requiers___id_re__412EB0B6" />
+        <EntityTypeShape EntityType="WORKERSModel.company" Width="1.5" PointX="6.375" PointY="0.875" />
+        <AssociationConnector Association="WORKERSModel.FK__jobs__id_comp__38996AB5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
